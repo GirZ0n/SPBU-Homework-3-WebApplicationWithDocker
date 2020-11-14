@@ -7,8 +7,6 @@ import io.ktor.freemarker.FreeMarkerContent
 import io.ktor.response.respond
 import io.ktor.routing.get
 import io.ktor.routing.routing
-import io.ktor.server.engine.embeddedServer
-import io.ktor.server.netty.Netty
 
 fun Application.module() {
     install(FreeMarker) {
@@ -34,10 +32,4 @@ fun Application.module() {
             call.respond(FreeMarkerContent("randomJoke.ftl", mapOf("joke" to repo.getRandomJoke())))
         }
     }
-}
-
-private const val PORT = 8080
-
-fun main() {
-    embeddedServer(Netty, PORT, module = Application::module).start()
 }
