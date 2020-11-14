@@ -1,10 +1,14 @@
 import freemarker.cache.ClassTemplateLoader
-import io.ktor.application.*
-import io.ktor.freemarker.*
-import io.ktor.response.*
-import io.ktor.routing.*
-import io.ktor.server.engine.*
-import io.ktor.server.netty.*
+import io.ktor.application.Application
+import io.ktor.application.call
+import io.ktor.application.install
+import io.ktor.freemarker.FreeMarker
+import io.ktor.freemarker.FreeMarkerContent
+import io.ktor.response.respond
+import io.ktor.routing.get
+import io.ktor.routing.routing
+import io.ktor.server.engine.embeddedServer
+import io.ktor.server.netty.Netty
 
 fun Application.module() {
     install(FreeMarker) {
@@ -32,6 +36,8 @@ fun Application.module() {
     }
 }
 
+private const val PORT = 8080
+
 fun main() {
-    embeddedServer(Netty, 8080, module = Application::module).start()
+    embeddedServer(Netty, PORT, module = Application::module).start()
 }

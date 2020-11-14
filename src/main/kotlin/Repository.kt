@@ -1,15 +1,16 @@
 import api.Image
 import api.Joke
-import io.ktor.client.*
-import io.ktor.client.features.json.*
-import io.ktor.client.features.json.serializer.*
-import io.ktor.client.request.*
-import java.util.*
+import io.ktor.client.HttpClient
+import io.ktor.client.features.json.JsonFeature
+import io.ktor.client.features.json.serializer.KotlinxSerializer
+import io.ktor.client.request.get
+import kotlinx.serialization.json.Json
+import kotlin.random.Random
 
 object Repository {
     private val client = HttpClient {
         install(JsonFeature) {
-            val jsonSerializer = KotlinxSerializer(kotlinx.serialization.json.Json {
+            val jsonSerializer = KotlinxSerializer(Json {
                 ignoreUnknownKeys = true
                 isLenient = true
             })
@@ -28,5 +29,5 @@ object Repository {
         return joke.value
     }
 
-    fun getRandomNumber() = Random().nextInt().toString()
+    fun getRandomNumber() = Random.nextInt().toString()
 }
