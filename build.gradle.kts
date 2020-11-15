@@ -1,16 +1,5 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
-buildscript {
-    repositories {
-        jcenter()
-        maven("https://plugins.gradle.org/m2")
-    }
-    dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10")
-        classpath("com.github.jengelman.gradle.plugins:shadow:5.2.0")
-    }
-}
-
 plugins {
     application
     kotlin("jvm") version "1.4.10"
@@ -35,7 +24,6 @@ version = "1.0-SNAPSHOT"
 repositories {
     mavenCentral()
     jcenter()
-    maven("https://dl.bintray.com/kotlin/ktor")
 }
 
 val ktorVersion = "1.4.0"
