@@ -39,7 +39,7 @@ RUN apk update && apk upgrade && apk add openjdk8
 # Устанавливаем переменную JAVA_HOME
 RUN export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
-# Копируем jar
+# Копируем jar из предыдущего этапа
 COPY --from=builder ./app/build/libs/webApplicationWithDocker.jar .
 
 # Запускаем jar
