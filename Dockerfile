@@ -1,5 +1,6 @@
 # I ЭТАП: сборка приложения
 FROM alpine as builder
+LABEL stage=webApplicationBuilder
 
 # Добавляем openjdk
 RUN apk update && apk upgrade && apk add openjdk8
