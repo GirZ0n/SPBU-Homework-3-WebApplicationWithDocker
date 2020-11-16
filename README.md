@@ -5,7 +5,7 @@ sudo docker build -t ktor-webapplication .
 sudo docker run -d -p 8080:8080 --rm ktor-webapplication
 ```
 
-Execute this command to remove building image:
+Execute this command to remove unnecessary building image:
 ```
 sudo docker image prune --filter label=stage=webApplicationBuilder
 ```
